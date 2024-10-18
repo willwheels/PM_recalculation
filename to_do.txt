@@ -1,0 +1,9 @@
+do my counts and maps match the supp info?
+
+process all years, expand to daily and annual
+
+find an application?
+
+figure out a better way to be consistent about tidyverse vs tidytable
+
+fifteystatr (sp?) package puts lines around AK and HI (similar to OAR map) but package doesn't include PR, could be an aesthetic improvement; also, I prefer "below" option in shift_geometry but willing to discuss
