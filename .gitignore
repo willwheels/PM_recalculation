@@ -3,8 +3,9 @@
 .RData
 .Ruserdata
 .RDS
+.csv
 
 .zip
 
-.jpg
-.jpeg
+*.jpg
+*.jpeg
