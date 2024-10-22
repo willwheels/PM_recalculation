@@ -134,53 +134,22 @@ ggplot(data = all_monitors|>
 ###
 
 
-monitor_data_2023 <- readRDS(here::here("data", "pm_downloads", "R_data_files", "monitor_data_2023.RDS" )) 
-## some have 236, 636, and 736!
+load(here::here("data", "monitor_map_sf.Rda"))
+load(here::here("data", "us_states_sf.Rda"))
 
-monitor_map_2023 <- monitor_data_2023 |>
+monitor_data_2023 <- readRDS(here::here("data", "pm_downloads", "R_data_files", "monitor_data_2023.RDS"))
+
+monitor_data_2023 <- monitor_data_2023 |>
   group_by(identifier) |>
   mutate(corrected = n() > 1) |>
   ungroup() |>
   select(-poc, -method_code, -n) |>
-  distinct()
+  distinct() |>
+  select(identifier, corrected)
 
-monitor_map_WGS84_2023 <- monitor_map_2023 |>
-  filter(datum == "WGS84") |>
-  sf::st_as_sf(coords = c("longitude", "latitude"), 
-               crs = sf::st_crs("WGS84"))
-
-monitor_map_NAD83_2023 <- monitor_map_2023 |>
-  filter(datum == "NAD83") |>
-  sf::st_as_sf(coords = c("longitude", "latitude"), 
-               crs = sf::st_crs("NAD83")) |>
-  sf::st_transform(crs = sf::st_crs("WGS84"))
-
-monitor_map_sf_2023 <- bind_rows(monitor_map_WGS84_2023, monitor_map_NAD83_2023) 
-
-state_fips <- tigris::fips_codes |>
-  select(state, state_code) |>
-  distinct()
-  
-monitor_map_sf_2023 <- monitor_map_sf_2023 |>
-  mutate(state_code = as.character(state_code),  ## have to track down when this got messed up
-         state_code = stringr::str_pad(state_code, width = 2, pad = "0", side = "left")) |>
-  left_join(state_fips, by = c("state_code")) |>
-  filter(state %in% c(state.abb, "DC", "PR")) |>
-  tigris::shift_geometry(#geoid = "state",
-                          preserve_area = FALSE, position = "below")
-
-# ggplot(monitor_map_sf_2023 , 
-#        aes(color = corrected)) +
-#   geom_sf() +
-#   #stat_sf_coordinates() +
-#   labs(title = "Map of PM monitors in 2023") +
-#   ggthemes::theme_map() +  ## theme covers up hawaii!!!
-#   ggthemes::scale_color_colorblind()
-
-us_states <- tigris::states() |>
-  filter(STUSPS %in% c(state.abb, "DC", "PR")) |>
-  tigris::shift_geometry(preserve_area = FALSE, position = "below")
-
+monitor_map_sf_2023 <- monitor_map_sf |>
+  left_join(monitor_data_2023) |>
+  filter(!is.na(corrected))
 
 ggplot(monitor_map_sf_2023) +
   geom_sf(aes(color = corrected)) +
@@ -208,7 +177,7 @@ ggplot(new_monitors_since_2017) +
   geom_sf(aes(color = corrected)) +
   geom_sf(data = us_states, fill = NA) +
   #stat_sf_coordinates() +
-  labs(title = "Map of PM monitors in 2023",
+  labs(title = "Map of PM monitors in 2023 Since 2017",
        caption = "AK, HI, and PR repositioned and not to scale") +
   ggthemes::theme_map() +  ## theme covers up hawaii!!!
   ggthemes::scale_color_colorblind() +
