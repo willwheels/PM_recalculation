@@ -2,10 +2,11 @@
 .Rhistory
 .RData
 .Ruserdata
-.RDS
-.csv
+*.Rda
+*.RDS
+*.csv
 
-.zip
+*.zip
 
 *.jpg
 *.jpeg
