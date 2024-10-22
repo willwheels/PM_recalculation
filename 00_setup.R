@@ -19,7 +19,7 @@ if(!dir.exists(here::here("data", "pm_downloads", "zip_files"))) {
 
 if(!dir.exists(here::here("data", "pm_downloads", "unzipped_files"))) {
   
-  dir.create(here::here("data", "pm_downloads", "unzipped_files", "annual"), recursive = TRUE)
+  dir.create(here::here("data", "pm_downloads", "unzipped_files"), recursive = TRUE)
   
 }
 
@@ -29,8 +29,3 @@ if(!dir.exists(here::here("data", "pm_downloads", "R_data_files"))) {
   
 }
 
-if(!dir.exists(here::here("data", "pm_downloads", "R_data_files", "daily_agg"))) {
-  
-  dir.create(here::here("data", "pm_downloads", "R_data_files", "daily_agg"), recursive = TRUE)
-
-}
