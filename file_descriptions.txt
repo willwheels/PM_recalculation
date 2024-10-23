@@ -1,0 +1,15 @@
+What each file does (incomplete)
+
+00_setup -- install packages (right now, written to add non-DMAP packages so incomplete); we could use renv--although that is no fun on DMAP--or groundhogr, which I've recently heard of
+
+05_download_and_unzip_hourly_files -- self-explanatory, I hope
+
+10_process_hourly_downloads -- create identifiers, clean names and other basic manipulation; calculates the change in pm readings for affected monitors; outputs R data.tables of monitor and pm reading data in RDS
+
+15_prep_maps -- creates sf data frames for monitor locations and a map of the u.s. both using tigris::shift_geometry; one caution is that sf doesn't really like data.tables, so I had to use dplyr functions
+
+20_initial_counts_and_graphs -- provide basic summaries of counts of affected monitors
+
+30_map_of_changes -- maps the degree of changes for 2023
+
+50_compare_monitor_types -- calculates mean, median, and max pm readings for unaffected monitors vs corrected and uncorrected values at affected monitors at hourly, daily, and monthly scales; dataframes could be used for tables
