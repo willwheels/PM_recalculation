@@ -1,0 +1,49 @@
+---
+title: "PM 2.5 Recalculation at Stationary Monitors"
+date: 2024-10-31
+format: 
+  pptx:
+    incremental: true
+author: 
+  - name: "Drew Schreiber"
+  - name: "Will Wheeler"
+editor: source
+---
+
+## EPA PM 2.5 Monitoring Data
+
+ - EPA's PM 2.5 monitoring data housed in the Air Quality System (AQS) is one of our most important data sets
+ - used to determine compliance with the NAAQS, in health effects research, to downscale satellite PM data
+ - in 2024, EPA *retroactively* changed data for a specific monitor type in the AQS from 2017-2023
+ - in 2023, about 400 monitors—nearly half of all PM2.5 monitors—with over 2 million hourly observations were affected by this change
+ - original data is still in AQS
+
+ 
+## Timeline
+
+- July, 2016: EPA approved Teledyne 640/640X as Federal Equivalent Monitors for PM 2.5
+- two of a class of monitors that use optical sensors instead of the filters used in Federal Reference Monitors (cheaper and easier to maintain)
+- early 2017: states begain using these monitors in their monitoring systems
+- these monitors soon showed higher readings compared to collocated Reference Monitors
+- March, 2022: CASAC said , “The FEM bias needs to be addressed to make the FRMs and FEMs more comparable." 
+- May, 2024: final FRN "Update of PM2.5 Data From T640/T640X PM Mass Monitors"
+
+
+## Motivation
+
+"The EPA believes it is important to update the historical data in AQS to ensure that the most scientifically accurate data are utilized in peer-reviewed research that support the NAAQS, in particularly when evaluating human health and ecosystem activities."
+
+## Increase in Use of FEMs
+
+![count_graph](../figs/observation_counts.png)
+
+## Map of Changes in Affected Monitors
+
+![monitor_map_changes](../figs/monitor_map_pm_changes.png))
+
+
+## Next steps
+
+- Fully quantify extent of changes
+- Write "user's guide" so researchers can correctly identify data
+
