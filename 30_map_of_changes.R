@@ -1,6 +1,7 @@
 
 library(tidytable)
 library(ggplot2)
+library(sf) ## call to prevent error in joining sf to tibble
 
 ## note that I discovered a minor error--a handful of  monitors have >1 poc and not all calculations account for that
 ## should probably move creation of change df to another file
@@ -45,6 +46,9 @@ ggplot(monitor_map_sf_2023) +
   labs(title = "Map of PM Corrected Monitors in 2023, Average Change in Hourly PM 2.5") +
   ggthemes::theme_map() + 
   scale_color_viridis_c()
+
+ggsave(here::here("figs", "monitor_map_pm_changes.png"),
+       h = 8.5, w = 11, units = "in", bg = "white")
 
 ggplot(monitor_map_sf_2023) +
   geom_sf(aes(color = mean_pct_change)) +

@@ -74,6 +74,9 @@ ggplot(data = all_counts |>
   theme_minimal() +
   ggthemes::scale_color_colorblind()
 
+ggsave(here::here("figs", "observation_counts.png"), h = 8.5, w = 11, units = "in",
+       bg = "white")
+
 ## note--should I redo this by month?
 
 ## This does not account well for monitors that shifted to aligned 
