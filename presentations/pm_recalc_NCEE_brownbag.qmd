@@ -4,6 +4,7 @@ date: 2024-10-31
 format: 
   pptx:
     incremental: true
+    reference-doc: NCEE_Eggtimer_Presentations.potx
 author: 
   - name: "Drew Schreiber"
   - name: "Will Wheeler"
@@ -39,7 +40,7 @@ editor: source
 
 ## Map of Changes in Affected Monitors
 
-![monitor_map_changes](../figs/monitor_map_pm_changes.png))
+![monitor_map_changes](../figs/monitor_map_pm_changes.png)
 
 
 ## Next steps
