@@ -3,6 +3,7 @@ title: "PM 2.5 Recalculation at Stationary Monitors"
 format: 
   pptx:
     incremental: true
+    reference-doc: ..\figs\NCEE_Eggtimer_Presentations.potx
 author: 
   - name: "Drew Schreiber"
 editor: source
